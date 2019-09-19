@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ContactForm, CreateAccountForm
 from django.core.mail import send_mail, BadHeaderError
 from .models import User, Appointment
-
+import datetime
 
 def homeView(request):
     if request.method == 'GET':
@@ -34,9 +34,10 @@ def homeView(request):
                 u.save()
                 apt = Appointment()
                 apt.apt_email = u
-                apt.apt_pref = str(form.cleaned_data['Date']) +" "+str(
-                    form.cleaned_data[
-                    'Time'])
+                try:
+                    apt.apt_pref = str(form.cleaned_data['Date']) +" "+ datetime.time.strftime(((form.cleaned_data['Time'])))
+                except:
+                    apt.apt_pref = str(form.cleaned_data['Date'])
                 apt.apt_type = form.cleaned_data['Service']
                 apt.apt_ip = request.META['REMOTE_ADDR']
                 apt.save()
@@ -59,9 +60,10 @@ def homeView(request):
                 message = "New Appointment Confirmed!\n\nUser Information\n"
                 message += "Name: " + u.user_fname + " " + u.user_lname + "\n"
                 message += "Email: " + u.user_email + "\n"
-                message += "Phone: " + u.user_phone + "\n\n"
+                message += "Phone: " + str(u.user_phone) + "\n\n"
                 message += "Vehicle Information\n"
-                message += u.user_make + " " +u.user_model +" ("+u.user_year+")\n\n"
+                message += u.user_make + " "
+                message += u.user_model +" (" +str(u.user_year)+")\n\n"
 
                 message += "Appointment Information \n"
                 message += "Time: " + apt.apt_pref + "\n"
