@@ -1,0 +1,21 @@
+Date: 09/19/2019
+Author: Kara Manseau
+
+Implementation Notes:
+
+App created with python 3.7 and PyCharm.
+Requires Django 2.2.5 and data is managed through a sqlite database.
+
+Utilize the manage.py file to initialize the server on whatever port you
+want by using the runserver command:
+$ python manage.py runserver 8080
+
+
+
+Additional information about django:
+https://docs.djangoproject.com/en/2.2/intro/tutorial01/
+
+
+Sources and Citations
+Colorlib (https://colorlib.com) was used as reference for the underlying html
+and css front-end design stuff.
