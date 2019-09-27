@@ -1,35 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-	<title>Appointment Scheduler</title>
-
-	<!-- Google font -->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
-</head>
-<style>
-    input{
-        border-radius: 2px;
-
-    }
-
-</style>
-<body>
-    {% load staticfiles %}
-
-    <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/bootstrap.min.css' %}" />
-
+{% extends "header.html" %}
+{% block content %}
 	<div id="booking" class="section">
 		<div class="section-center">
 			<div class="container">
@@ -37,25 +7,17 @@
 					<div class="col-md-7 col-md-push-5">
 						<div class="booking-cta">
 							<h1>Schedule Appointment</h1>
-							<p>Fill out the following information to schedule
-                                your first appointment!
-							</p>
+							<p>Fill out the following information to schedule your first appointment!</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-md-pull-7">
 						<div class="booking-form">
                             <form class="booking-form" method="post">
-                             {% csrf_token %}
+                                {% csrf_token %}
                                 <div class="form-group" style="display: table-caption">
                                     {{ form.as_p }}
                                 </div>
-                                <script>
-                                    document.getElementById('id_Email').value=location.href.toString().split("?email=")[1]
-                                    document.getElementById('id_Phone').type='tel';
-                                    document.getElementById('id_Year').type='year';
-                                    document.getElementById('id_Time').type='time';
-                                    document.getElementById('id_Date').type='date'
-                                </script>
+
                                 <div class="form-actions">
                                     <button class="submit-btn" type="submit" style="width:100%">Send</button>
                                 </div>
@@ -66,8 +28,4 @@
 			</div>
 		</div>
 	</div>
-
-</body>
-
-
-</html>
+{% endblock %}

@@ -12,6 +12,7 @@ def homeView(request):
         email=request.GET['email']
         if User.objects.all().filter(user_email=email).exists()==False:
             if request.method == 'GET':
+
                 form = CreateAccountForm(initial={'Email':email})
         else:
             cur_user = User.objects.all().filter(user_email=email)[0]
@@ -79,6 +80,7 @@ def homeView(request):
             else:
                 return HttpResponse('Invalid header found.')
     return render(request, "app/index.html", {'form': form})
+
 
 
 def emailView(request):

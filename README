@@ -19,3 +19,9 @@ https://docs.djangoproject.com/en/2.2/intro/tutorial01/
 Sources and Citations
 Colorlib (https://colorlib.com) was used as reference for the underlying html
 and css front-end design stuff.
+
+
+
+makemigrations app
+sqlmigrate app 0001
+migrate
