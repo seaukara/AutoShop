@@ -97,7 +97,7 @@ def emailView(request):
                 to_email = form.cleaned_data['Email']
                 message = "Hi, thank you for contacting us! Please click the below link for additional details." + link
                 try:
-                    send_mail(subject, message, 'karamanseau@gmail.com', [to_email])
+                    send_mail(subject, message, '', [to_email])
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
                 return redirect('success')
