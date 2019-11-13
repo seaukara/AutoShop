@@ -49,13 +49,13 @@ def homeView(request):
                 message += "Appointment Time: " + apt.apt_pref
 
                 try:
-                    send_mail(subject, message, 'karamanseau@gmail.com',
+                    send_mail(subject, message, '',
                               [to_email])
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
 
 
-                to_email = "repairs@example.com"
+                to_email = ""
                 subject = "Car Repair Appointment"
 
                 message = "New Appointment Confirmed!\n\nUser Information\n"
@@ -71,7 +71,7 @@ def homeView(request):
                 message += "Service Description: " + apt.apt_type + "\n"
                 message += "IP: " + apt.apt_ip
                 try:
-                    send_mail(subject, message, 'karamanseau@gmail.com',
+                    send_mail(subject, message, '',
                               [to_email])
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
